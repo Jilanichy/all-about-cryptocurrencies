@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    {% if empty %}
+        <br><h4>{{ empty }}</h4>
+
+    {% else %}
+        <br>
+        {{ crypto.Message }}
+
+        {% for key, value in crypto.DISPLAY.items %}
+
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                <h4 class="display-4">{{ key }}</h4>
+                <ul>
+                    <strong>Name:</strong>          <li>{{key }}</li>
+                    <strong>Price:</strong>         <li>{{ value.USD.PRICE }}</li>
+                    <strong>Today's High:</strong>  <li>{{ value.USD.HIGHDAY }}</li>
+                    <strong>Today's Low:</strong>   <li>{{ value.USD.LOW24HOUR }}</li>
+                    <strong>Market Cap:</strong>    <li>{{ value.USD.MKTCAP }}</li>
+                </ul>
+              </div><br>
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+{% endblock %}
